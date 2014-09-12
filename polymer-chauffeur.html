@@ -1,0 +1,123 @@
+<!--
+@license
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-field/core-field.html">
+<link rel="import" href="../core-icon/core-icon.html">
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../core-input/core-input.html">
+<link rel="import" href="../core-pages/core-pages.html">
+<link rel="import" href="../google-map/google-map.html">
+<link rel="import" href="../google-map/google-map-search.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="../uber-products/uber-products.html">
+<link rel="import" href="../uber-estimates-time/uber-estimates-time.html">
+
+<!--
+An application to find Uber products and time estimates for a given map location.
+
+##### Example
+
+    <polymer-chauffeur servertoken="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></polymer-chauffeur>
+
+@element polymer-chauffeur
+@blurb An application to find Uber products and time estimates for a given map location.
+@homepage https://polymerlabs.github.io/polymer-chauffeur/
+-->
+<polymer-element name="polymer-chauffeur" attributes="servertoken">
+
+  <template>
+    <style>    
+      :host {
+        font-family: sans-serif;
+      }
+
+      #google_map {
+        width: 100%;
+        height: 100%;
+        display: block;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+      }
+
+      #core_card {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        top: 30px;
+        left: 30px;
+        background-color: rgb(255, 255, 255);
+      }
+    </style>
+
+    <google-map-search map="{{map}}" query="{{$.core_input.value}}" result="{{result}}">
+    </google-map-search>
+
+    <google-map disableDefaultUI fit
+      map="{{map}}"
+      latitude="{{result.latitude}}"
+      longitude="{{result.longitude}}">
+      <google-map-marker latitude="{{result.latitude}}" longitude="{{result.longitude}}">
+      </google-map-marker>
+    </google-map>
+
+    <core-card id="core_card" layout vertical>
+      <core-field id="core_field" icon="search" theme="core-light-theme" center horizontal layout>
+        <core-icon icon="search" id="core_icon"></core-icon>
+        <core-input willvalidate
+          placeholder="Location" id="core_input" value="345 Spear St. San Francisco" flex>
+        </core-input>
+      </core-field>
+      <paper-tabs selected="{{selectedTabIndex}}">
+        <paper-tab>Products</paper-tab>
+        <paper-tab>Time Estimates</paper-tab>
+      </paper-tabs>
+      <core-pages selected="{{selectedTabIndex}}">
+        <uber-products
+          latitude="{{result.latitude}}"
+          longitude="{{result.longitude}}"
+          servertoken="{{servertoken}}"></uber-products>
+        <uber-estimates-time
+          latitude="{{result.latitude}}"
+          longitude="{{result.longitude}}"
+          servertoken="{{servertoken}}"></uber-estimates-time>
+      </core-pages>
+    </core-card>
+  </template>
+
+  <script>
+
+    Polymer({
+      /**
+       * An Uber server token.
+       *
+       * @attribute servertoken
+       * @type string
+       */
+      servertoken: null,
+
+      map: null,
+
+      result: {
+        latitude: 0,
+        longitude: 0
+      },
+
+      selectedTabIndex: 0
+    });
+
+  </script>
+
+</polymer-element>

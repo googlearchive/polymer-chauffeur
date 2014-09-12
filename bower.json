@@ -1,0 +1,27 @@
+{
+  "name": "polymer-chauffeur",
+  "version": "0.1.0",
+  "authors": [
+    "Keanu Lee <keanulee@google.com>"
+  ],
+  "description": "An application to find Uber products and time estimates for a given map location.",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "uber"
+  ],
+  "main": "polymer-chauffeur.html",
+  "homepage": "https://polymerlabs.github.io/polymer-chauffeur/",
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0",
+    "core-field": "Polymer/core-field#>=0.4.0 <1.0.0",
+    "core-icon": "Polymer/core-icon#>=0.4.0 <1.0.0",
+    "core-icons": "Polymer/core-icons#>=0.4.0 <1.0.0",
+    "core-input": "Polymer/core-input#>=0.4.0 <1.0.0",
+    "core-pages": "Polymer/core-pages#>=0.4.0 <1.0.0",
+    "google-map": "GoogleWebComponents/google-map#>=0.3.1 <1.0.0",
+    "paper-tabs": "Polymer/paper-tabs#>=0.4.0 <1.0.0",
+    "uber-products": "PolymerLabs/uber-products#master",
+    "uber-estimates-time": "PolymerLabs/uber-estimates-time#master"
+  }
+}
