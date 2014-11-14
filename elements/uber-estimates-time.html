@@ -1,0 +1,86 @@
+<!--
+@license
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<!--
+Displays a list of Uber time estimates given a latitude and longitude.
+
+##### Example
+
+    <uber-estimates-time
+      latitude="37.77493"
+      longitude="-122.41942"
+      servertoken="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></uber-estimates-time>
+
+@element uber-estimates-time
+@blurb Displays a list of Uber time estimates given a latitude and longitude.
+@homepage https://polymerlabs.github.io/uber-estimates-time/
+-->
+<polymer-element name="uber-estimates-time" attributes="latitude longitude servertoken">
+
+  <template>
+    
+    <core-ajax
+        id="uber_ajax"
+        url="https://api.uber.com/v1/estimates/time"
+        headers='{"Authorization": "Token {{servertoken}}"}'
+        params='{"start_latitude":"{{latitude}}", "start_longitude":"{{longitude}}"}'
+        handleAs="json"
+        response="{{response}}"></core-ajax>
+
+    <paper-button raised on-tap="{{search}}">Get Time Estimates</paper-button>
+
+    <ul>
+      <template repeat="{{response.times}}">
+        <li>{{display_name}} - {{estimate}}s</li>
+      </template>
+    </ul>
+
+  </template>
+
+  <script>
+
+    Polymer({
+      /**
+       * An Uber server token.
+       *
+       * @attribute servertoken
+       * @type string
+       */
+      servertoken: null,
+
+      /**
+       * The latitude to query.
+       *
+       * @attribute latitude
+       * @type number
+       * @default 37.77493
+       */
+      latitude: 37.77493,
+
+      /**
+       * The longitude to query.
+       *
+       * @attribute longitude
+       * @type number
+       * @default -122.41942
+       */
+      longitude: -122.41942,
+
+      search: function() {
+        if (this.latitude && this.longitude) this.$.uber_ajax.go();
+      }
+    });
+
+  </script>
+
+</polymer-element>

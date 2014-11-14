@@ -7,17 +7,16 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../core-field/core-field.html">
-<link rel="import" href="../core-icon/core-icon.html">
-<link rel="import" href="../core-icons/core-icons.html">
-<link rel="import" href="../core-input/core-input.html">
-<link rel="import" href="../core-pages/core-pages.html">
-<link rel="import" href="../google-map/google-map.html">
-<link rel="import" href="../google-map/google-map-search.html">
-<link rel="import" href="../paper-tabs/paper-tabs.html">
-<link rel="import" href="../uber-products/uber-products.html">
-<link rel="import" href="../uber-estimates-time/uber-estimates-time.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-input/core-input.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-search.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="uber-products.html">
+<link rel="import" href="uber-estimates-time.html">
 
 <!--
 An application to find Uber products and time estimates for a given map location.
@@ -74,12 +73,10 @@ An application to find Uber products and time estimates for a given map location
     </google-map>
 
     <core-card id="core_card" layout vertical>
-      <core-field id="core_field" icon="search" theme="core-light-theme" center horizontal layout>
+      <div horizontal layout>
         <core-icon icon="search" id="core_icon"></core-icon>
-        <core-input willvalidate
-          placeholder="Location" id="core_input" value="345 Spear St. San Francisco" flex>
-        </core-input>
-      </core-field>
+        <input is="core-input" placeholder="Location" id="core_input" value="345 Spear St. San Francisco" flex>
+      </div>
       <paper-tabs selected="{{selectedTabIndex}}">
         <paper-tab>Products</paper-tab>
         <paper-tab>Time Estimates</paper-tab>
