@@ -9,12 +9,8 @@
     "core-icons": "Polymer/core-icons#^0.5.1",
     "core-input": "Polymer/core-input#^0.5.1",
     "core-pages": "Polymer/core-pages#^0.5.1",
-    "google-map": "GoogleWebComponents/google-map#^0.3.2",
+    "google-map": "GoogleWebComponents/google-map#^0.4.0",
     "paper-tabs": "Polymer/paper-tabs#^0.5.1",
     "paper-button": "Polymer/paper-button#^0.5.1"
-  },
-  "resolutions": {
-    "polymer": "^0.5.1",
-    "core-component-page": "^0.5.0"
   }
 }

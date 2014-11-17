@@ -1,6 +1,6 @@
 {
   "name": "google-map",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "homepage": "http://googlewebcomponents.github.io/google-map",
   "description": "Google Maps web components",
   "main": "google-map.html",
@@ -27,18 +27,18 @@
     "maps"
   ],
   "dependencies": {
-    "google-apis": "GoogleWebComponents/google-apis#~0.3.3"
+    "google-apis": "GoogleWebComponents/google-apis#~0.4.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^1.1.2"
   },
-  "_release": "0.3.2",
+  "_release": "0.4.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.2",
-    "commit": "3f63714920be727030d3fb717798df1e81d7b5a6"
+    "tag": "0.4.0",
+    "commit": "754ff8c58e0f4ffec74b5e8602984911977e0319"
   },
   "_source": "git://github.com/GoogleWebComponents/google-map.git",
-  "_target": "^0.3.2",
+  "_target": "^0.4.0",
   "_originalSource": "GoogleWebComponents/google-map"
 }
